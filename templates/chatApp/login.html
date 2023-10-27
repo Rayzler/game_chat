@@ -1,0 +1,65 @@
+{% extends "chatApp/base.html" %}
+
+{% block title %}Log in | {% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="container-form">
+            <div class="text">Log in</div>
+
+            <form action="." method="post" autocomplete="off" autofocus>
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="input-data">
+                        <input type="text" name="username" required id="username" autofocus tabindex="1">
+                        <div class="underline"></div>
+                        <label for="">Username</label>
+                        {% if form.username.errors %}
+                            <div class="my-2 p-4 rounded-xl bg-red-300 text-white">
+                                {% for error in form.username.errors %}
+                                    <p>{{ error|escape }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-data">
+                        <input type="password" name="password" required id="password" tabindex="2">
+                        <div class="underline"></div>
+                        <label for="">Password</label>
+                        {% if form.password1.errors %}
+                            <div class="my-2 p-4 rounded-xl bg-red-300 text-white">
+                                {% for error in form.password.errors %}
+                                    <p>{{ error|escape }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row hidden">
+                    <div class="input-data">
+                        <input type="password" tabindex="100">
+                        <div class="underline"></div>
+                    </div>
+                </div>
+
+                <div class="input-data">
+                    <div class="form-row submit-btn">
+                        <div class="input-data">
+                            <div class="inner"></div>
+                            <input type="submit" value="Log in" tabindex="3">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+
+    </script>
+
+{% endblock %}
