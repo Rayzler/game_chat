@@ -1,1 +1,1 @@
-web: gunicorn chatProject.wsgi
+web: python manage.py migrate && gunicorn chatProject.wsgi
